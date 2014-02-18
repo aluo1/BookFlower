@@ -31,9 +31,10 @@ function draw(){
     });
 
     rScale.domain([0, d3.max(data, function(d){return d.pages;})]);
+
     
     var chart = svg.selectAll('circle')
-      .data(data)
+      .data([data[0]])
       .enter()
       .append('circle')
       .attr('cx', width/2)
