@@ -99,12 +99,6 @@ function draw(){
         .duration(1000)
         .ease('elastic')
         .attr('r', function(d, i){
-
-          var temp = Math.sqrt(rScale(d.pages)/Math.PI);
-          if (!(0 < temp && temp < 10000)) {
-            console.log(dataView);
-          }
-
           return Math.sqrt(rScale(d.pages)/Math.PI);
         }) /*square root of pages normalized over pi*/
         .attr('fill', function(d){ return colors[d.genre]; });
