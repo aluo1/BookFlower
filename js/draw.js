@@ -82,19 +82,17 @@ function draw(){
 
       dataView = [data[n]];
 
-      // Update background
-
-       svg.insert("rect", "circle")
+      // Update circle & background
+ 
+      var bookCircles = svg.selectAll('circle')
+        .data(dataView);
+ 
+      svg.selectAll('rect')
          .data(dataView)
          .attr("width", "100%")
          .attr("height", "100%")
-         .attr("fill", function(d){ return feels[d.feeling]; });
-
-      // Update circle
-
-      var bookCircles = svg.selectAll('circle')
-        .data(dataView);
-
+         .attr("fill", function(d){ return feels[d.feeling]; });  
+ 
       bookCircles.transition()
         .duration(1000)
         .ease('elastic')
