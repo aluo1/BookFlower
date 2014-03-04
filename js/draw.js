@@ -46,8 +46,7 @@ function draw(){
   d3.json('js/books.json', function(error, data){
 
     data.forEach(function(d) {
-      
-      d.pages = +d.pages;
+      d.pages = +(d.pages.replace(/\,/g,''));
     });
 
     rScale.domain([0, d3.max(data, function(d){return d.pages;})]);
