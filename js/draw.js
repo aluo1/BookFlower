@@ -124,14 +124,10 @@ function draw(){
       .attr('cy', height/2)
       .attr('r', function(d){return Math.sqrt(rScale(d.pages)/Math.PI);}) /*square root of pages normalized over pi*/
       .attr('fill', function(d){ return colors[d.genre]; });
-
-    // var soundPath = feels[dataView[0].feeling].sound;
-
-    // var sound = new Howl({
-    //   urls: [soundPath]
-    // }).play();
-
+    
     makeSound();
+
+    d3.select('#legend').text('' + dataView[0].genre + ' / ' + dataView[0].feeling + '');
 
     function changeBooks() {
 
@@ -164,9 +160,10 @@ function draw(){
         .attr('fill', function(d){ return colors[d.genre]; });
 
       makeSound();
+      d3.select('#legend').text('' + dataView[0].genre + ' / ' + dataView[0].feeling + '');
     }
 
-    setInterval(changeBooks, 1000);
+    setInterval(changeBooks, 1500);
   })
 }
 
