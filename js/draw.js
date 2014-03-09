@@ -17,67 +17,67 @@ function draw(){
   var feels = {
     'affectionate': { 
         'color': 'hsla(243, 93%, 64%, 1)', 
-        'sound': 'sounds/affectionate.wav'
+        'sound': 'js/sounds/affectionate.wav'
     },
     'ambivalent': {
         'color': 'hsla(243, 10%, 64%, 1)',
-        'sound': 'sounds/ambivalent.wav'
+        'sound': 'js/sounds/ambivalent.wav'
     },
     'oppressed by the Western canon': {
         'color': 'hsla(243, 10%, 27%, 1)',
-        'sound': 'sounds/oppressed.wav'
+        'sound': 'js/sounds/oppressed.wav'
     },
     'cozy': {
         'color': 'hsla(243, 43%, 33%, 1)',
-        'sound': 'sounds/cozy.wav'
+        'sound': 'js/sounds/cozy.wav'
     },
     'cringe-stalgic': {
         'color': 'hsla(109, 81%, 56%, 1)',   
-        'sound': 'sounds/cringe.aif'
+        'sound': 'js/sounds/cringe.aif'
     },
     'curious': {
         'color': 'hsla(222, 90%, 33%, 1)',
-        'sound': 'sounds/curious.wav'
+        'sound': 'js/sounds/curious.wav'
     },
     'empowered': {
         'color': 'hsla(6, 90%, 43%, 1)',
-        'sound': 'sounds/empowered.wav'
+        'sound': 'js/sounds/empowered.wav'
     },
     'excited': {
         'color': 'hsla(6, 100%, 53%, 1)',
-        'sound': 'sounds/excited.wav'
+        'sound': 'js/sounds/excited.wav'
     },
     'guilty': {
         'color': 'hsla(164, 100%, 22%, 1)',
-        'sound': 'sounds/guilty.wav'
+        'sound': 'js/sounds/guilty.wav'
     },
     'introspective': {
         'color': 'hsla(164, 100%, 49%, 1)',
-        'sound': 'sounds/introspective.wav'
+        'sound': 'js/sounds/introspective.wav'
     },
     'minimalist': {
         'color': 'hsla(0, 24%, 90%, 1)',
-        'sound': 'sounds/minimalist.wav'
+        'sound': 'js/sounds/minimalist.wav'
     },
     'nostalgic': {
         'color': 'hsla(350, 100%, 88%, 1)',
-        'sound': 'sounds/nost-wist.wav'
+        'sound': 'js/sounds/nost-wist.wav'
     },
     'proud': {
         'color': 'hsla(6, 90%, 43%, 1)',
-        'sound': 'sounds/proud.wav'
+        'sound': 'js/sounds/proud.wav'
     },
     'wistful': {
         'color': 'hsla(239, 36%, 18%, 1)',
-        'sound': 'sounds/nost-wist.wav'
+        'sound': 'js/sounds/nost-wist.wav'
     },
     'unrepentant': {
         'color': 'hsla(320, 100%, 49%, 1)',
-        'sound': 'sounds/unrep.wav'
+        'sound': 'js/sounds/unrep.wav'
     },
     'indefinable': {
         'color': 'hsla(243, 10%, 52%, 1)',
-        'sound': 'sounds/indef.wav'
+        'sound': 'js/sounds/indef.wav'
     }
 };
 
@@ -101,6 +101,15 @@ function draw(){
     var n = Math.floor(Math.random() * (data.length + 1));
     var dataView = [data[n]];
 
+    console.log(dataView);
+
+    var makeSound = function() {
+      var soundPath = feels[dataView[0].feeling].sound;
+      var sound = new Howl({
+        urls: [soundPath]
+      }).play();
+    }
+
     svg.append("rect")
       .data(dataView)
       .attr("width", "100%")
@@ -116,6 +125,13 @@ function draw(){
       .attr('r', function(d){return Math.sqrt(rScale(d.pages)/Math.PI);}) /*square root of pages normalized over pi*/
       .attr('fill', function(d){ return colors[d.genre]; });
 
+    // var soundPath = feels[dataView[0].feeling].sound;
+
+    // var sound = new Howl({
+    //   urls: [soundPath]
+    // }).play();
+
+    makeSound();
 
     function changeBooks() {
 
@@ -131,7 +147,7 @@ function draw(){
       var bookCircles = svg.selectAll('circle')
         .data(dataView);
 
-      console.log(dataView);
+      // console.log(dataView);
 
       svg.selectAll('rect')
          .data(dataView)
@@ -146,6 +162,8 @@ function draw(){
           return Math.sqrt(rScale(d.pages)/Math.PI);
         }) /*square root of pages normalized over pi*/
         .attr('fill', function(d){ return colors[d.genre]; });
+
+      makeSound();
     }
 
     setInterval(changeBooks, 1000);
