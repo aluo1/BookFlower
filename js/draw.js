@@ -163,13 +163,25 @@ function draw(){
       d3.select('span#title').text('' + dataView[0].genre + ' / ' + dataView[0].feeling + '');
     }
 
-    setInterval(changeBooks, 1500);
+    intervalId = setInterval(changeBooks, 1500);
+
+    $('#pause').click(function(){
+      if (intervalId) {
+        window.clearInterval(intervalId);
+        intervalId = undefined;
+      } else {
+        intervalId = setInterval(changeBooks, 1500);
+      }
+    $('i').toggleClass('fa-pause').toggleClass('fa-play');     
+    });
   })
 }
 
 $(document).ready(function(){
   draw();
+
   $('#legend').click(function(){
     $(this).toggleClass('legend-collapse');
   });
+
 })
