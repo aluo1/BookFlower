@@ -127,7 +127,7 @@ function draw(){
     
     makeSound();
 
-    d3.select('#legend').text('' + dataView[0].genre + ' / ' + dataView[0].feeling + '');
+    d3.select('span#title').text('' + dataView[0].genre + ' / ' + dataView[0].feeling + '');
 
     function changeBooks() {
 
@@ -160,7 +160,7 @@ function draw(){
         .attr('fill', function(d){ return colors[d.genre]; });
 
       makeSound();
-      d3.select('#legend').text('' + dataView[0].genre + ' / ' + dataView[0].feeling + '');
+      d3.select('span#title').text('' + dataView[0].genre + ' / ' + dataView[0].feeling + '');
     }
 
     setInterval(changeBooks, 1500);
@@ -169,4 +169,7 @@ function draw(){
 
 $(document).ready(function(){
   draw();
+  $('#legend').click(function(){
+    $(this).toggleClass('legend-collapse');
+  });
 })

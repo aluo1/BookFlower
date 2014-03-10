@@ -5820,6 +5820,24 @@ td.visible-print {
     display: none !important;
   }
 }
+.transition {
+  -webkit-transition-property: left, width;
+  -webkit-transition-duration: 2500ms, 0ms;
+  -webkit-transition-timing-function: ease-out, ease-out;
+  -webkit-transition-delay: 0s, -10s;
+  -moz-transition-property: left, width;
+  -moz-transition-duration: 2050ms, 0ms;
+  -moz-transition-timing-function: ease-out, ease-out;
+  -moz-transition-delay: 0s, -10s;
+  -o-transition-property: left, width;
+  -o-transition-duration: 2500ms, 0ms;
+  -o-transition-timing-function: ease-out, ease-out;
+  -o-transition-delay: 0s, -10s;
+  transition-property: left, width;
+  transition-duration: 2500ms, 0ms;
+  transition-timing-function: ease-out, ease-out;
+  transition-delay: 0s, -10s;
+}
 body {
   font-family: "Roboto Slab", Georgia, serif;
   font-size: 14px;
@@ -5834,17 +5852,46 @@ body {
   z-index: 2;
   padding: 10px 15px;
   height: 40px;
+  cursor: pointer;
 }
 .fa,
-p {
+span {
   vertical-align: middle;
+}
+p {
+  text-align: right;
+}
+#title::after {
+  content: " \25E2";
+  padding-left: 10px;
+  right: 0;
+  font-size: 16px;
 }
 #legend {
   top: 10px;
   font-weight: 300;
   margin-bottom: 10px;
+  -webkit-transition-property: left, width;
+  -webkit-transition-duration: 2500ms, 0ms;
+  -webkit-transition-timing-function: ease-out, ease-out;
+  -webkit-transition-delay: 0s, -10s;
+  -moz-transition-property: left, width;
+  -moz-transition-duration: 2050ms, 0ms;
+  -moz-transition-timing-function: ease-out, ease-out;
+  -moz-transition-delay: 0s, -10s;
+  -o-transition-property: left, width;
+  -o-transition-duration: 2500ms, 0ms;
+  -o-transition-timing-function: ease-out, ease-out;
+  -o-transition-delay: 0s, -10s;
+  transition-property: left, width;
+  transition-duration: 2500ms, 0ms;
+  transition-timing-function: ease-out, ease-out;
+  transition-delay: 0s, -10s;
+}
+#legend.legend-collapse {
+  left: -312px;
+  width: 355px;
 }
 #pause {
   top: 65px;
-  cursor: pointer;
 }
