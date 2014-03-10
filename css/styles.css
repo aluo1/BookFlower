@@ -5854,6 +5854,10 @@ body {
   height: 40px;
   cursor: pointer;
 }
+.control:hover,
+.control:active {
+  opacity: .7;
+}
 .fa,
 span {
   vertical-align: middle;
