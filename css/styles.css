@@ -5846,13 +5846,23 @@ body {
 .control {
   position: fixed;
   left: 0;
-  background-color: #fff;
+  background-color: #ffffff;
   opacity: .5;
-  color: #53535c;
+  color: #52525b;
   z-index: 2;
   padding: 10px 15px;
   height: 40px;
   cursor: pointer;
+}
+.control::selection {
+  background: rgba(255, 255, 255, 0);
+  /* Safari */
+
+}
+.control::-moz-selection {
+  background: rgba(255, 255, 255, 0);
+  /* Firefox */
+
 }
 .control:hover,
 .control:active {
@@ -5864,6 +5874,16 @@ span {
 }
 p {
   text-align: right;
+}
+p::selection {
+  background: rgba(255, 255, 255, 0);
+  /* Safari */
+
+}
+p::-moz-selection {
+  background: rgba(255, 255, 255, 0);
+  /* Firefox */
+
 }
 #title::after {
   content: " \25E2";
