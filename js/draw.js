@@ -110,6 +110,14 @@ function draw(){
       }).play();
     }
 
+    var legend = function() {
+       d3.select('span#title').text('' + dataView[0].genre + ' / ' + dataView[0].feeling + '');
+    }
+
+    var clean = function() {
+      d3.select('span#title').text('');
+    }
+
     svg.append("rect")
       .data(dataView)
       .attr("width", "100%")
@@ -126,8 +134,8 @@ function draw(){
       .attr('fill', function(d){ return colors[d.genre]; });
     
     makeSound();
+    !d3.select('#legend').classed('legend-collapse') && legend();
 
-    d3.select('span#title').text('' + dataView[0].genre + ' / ' + dataView[0].feeling + '');
 
     function changeBooks() {
 
@@ -160,7 +168,8 @@ function draw(){
         .attr('fill', function(d){ return colors[d.genre]; });
 
       makeSound();
-      d3.select('span#title').text('' + dataView[0].genre + ' / ' + dataView[0].feeling + '');
+      !d3.select('#legend').classed('dirty') && clean();
+      !d3.select('#legend').classed('legend-collapse') && legend();
     }
 
     intervalId = setInterval(changeBooks, 1500);
@@ -181,7 +190,7 @@ $(document).ready(function(){
   draw();
 
   $('#legend').click(function(){
-    $(this).toggleClass('legend-collapse');
+    $(this).toggleClass('legend-collapse dirty');
   });
 
 })

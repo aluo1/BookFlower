@@ -1,23 +1,9 @@
-.transition {
-  -webkit-transition-property: left, width;  
-  -webkit-transition-duration: 2500ms, 0ms;
-  -webkit-transition-timing-function: ease-out, ease-out;
-  -webkit-transition-delay: 0s, -10s;
-
-  -moz-transition-property: left, width;  
-  -moz-transition-duration: 2050ms, 0ms;
-  -moz-transition-timing-function: ease-out, ease-out;
-  -moz-transition-delay: 0s, -10s;
-
-  -o-transition-property: left, width;  
-  -o-transition-duration: 2500ms, 0ms;
-  -o-transition-timing-function: ease-out, ease-out;
-  -o-transition-delay: 0s, -10s;
-
-  transition-property: left, width;  
-  transition-duration: 2500ms, 0ms;
-  transition-timing-function: ease-out, ease-out;
-  transition-delay: 0s, -10s;
+.transition (@transition) {
+  -webkit-transition: @transition;  
+  -moz-transition:    @transition;
+  -ms-transition:     @transition; 
+  -o-transition:      @transition;
+  transition:         @transition;   
 }
 
 
@@ -67,21 +53,16 @@ p {
 
 #title::after {
   content: " \25E2" ;
-  padding-left: 10px;
-  right: 0;
   font-size: 16px; 
+  margin-left: 6px;
 }
 
 #legend {
   top: 10px;
   font-weight: 300;
+  padding: 10px;
   margin-bottom: 10px;
-  .transition();
-
-  &.legend-collapse {
-    left: -312px;
-    width: 355px;
-  }
+  .transition(all 500ms ease-out 1000s);
 }
 
 #pause {
