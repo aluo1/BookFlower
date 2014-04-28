@@ -91,6 +91,8 @@ function draw(){
   var rScale = d3.scale.linear()
     .range([0, Math.pow(smallest, 1.9)]);
 
+  var legend = d3.select('#legend');
+
   d3.json('js/books_no-art.json', function(error, data){
     data.forEach(function(d) {
       d.pages = +(d.pages.replace(/\,/g,'')); 
@@ -110,7 +112,7 @@ function draw(){
       }).play();
     }
 
-    var legend = function() {
+    var writeLegend = function() {
        d3.select('span#title').text('' + dataView[0].genre + ' / ' + dataView[0].feeling + '');
     }
 
@@ -134,7 +136,8 @@ function draw(){
       .attr('fill', function(d){ return colors[d.genre]; });
     
     makeSound();
-    !d3.select('#legend').classed('legend-collapse') && legend();
+    !legend.classed('legend-collapse') && writeLegend();
+    legend.on('click', function(){return writeLegend()})
 
 
     function changeBooks() {
@@ -168,8 +171,8 @@ function draw(){
         .attr('fill', function(d){ return colors[d.genre]; });
 
       makeSound();
-      !d3.select('#legend').classed('dirty') && clean();
-      !d3.select('#legend').classed('legend-collapse') && legend();
+      !legend.classed('dirty') && clean();
+      !legend.classed('legend-collapse') && writeLegend();
     }
 
     intervalId = setInterval(changeBooks, 1500);
